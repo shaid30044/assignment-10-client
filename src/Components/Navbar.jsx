@@ -117,7 +117,7 @@ const Navbar = () => {
           </li>
           <li className="px-6">
             <NavLink
-              to="/add-product"
+              to="/cart"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
@@ -131,7 +131,7 @@ const Navbar = () => {
           </li>
           <li className="px-6">
             <NavLink
-              to="/add-product"
+              to="/signIn"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
