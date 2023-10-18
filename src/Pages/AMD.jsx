@@ -106,22 +106,19 @@ const AMD = () => {
                       </div>
                     )}
                   </div>
-                  <p className="text-black/50">
-                    {product.rating === 4 ? (
-                      <span>{product.rating}.0</span>
-                    ) : (
-                      <span>{product.rating}</span>
-                    )}
-                  </p>
+                  <p className="text-black/50">{product.rating}</p>
                 </div>
               </div>
               <div className="grid grid-cols-3 items-center">
-                <Link>
+                <Link to={`/product/${product._id}`}>
                   <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover:bg-color2/40 duration-300 rounded-none w-full">
                     <FaEye />
                   </button>
                 </Link>
-                <Link className="border-x-[2px] border-color2/60">
+                <Link
+                  to={`/update-product/${product._id}`}
+                  className="border-x-[2px] border-color2/60"
+                >
                   <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full">
                     <HiPencil />
                   </button>
