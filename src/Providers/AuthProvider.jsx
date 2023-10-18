@@ -7,7 +7,6 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-  GithubAuthProvider,
 } from "firebase/auth";
 import auth from "../Firebase/firebase.config";
 import PropTypes from "prop-types";
@@ -18,7 +17,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -45,11 +43,6 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const githubLogin = () => {
-    setLoading(true);
-    return signInWithPopup(auth, githubProvider);
-  };
-
   const update = () => {
     setLoading(true);
     return updateProfile(auth.currentUser);
@@ -66,7 +59,6 @@ const AuthProvider = ({ children }) => {
     createUser,
     login,
     googleLogin,
-    githubLogin,
     update,
     logOut,
   };

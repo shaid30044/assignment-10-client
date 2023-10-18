@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { BiLink, BiUser } from "react-icons/bi";
-import { BsGoogle, BsGithub } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { PiPasswordBold } from "react-icons/pi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -8,10 +8,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import Navbar from "../Components/Navbar";
+import Swal from "sweetalert2";
+import Footer from "../Components/Footer";
 
 const SignUp = () => {
-  const { createUser, googleLogin, facebookLogin, githubLogin } =
-    useContext(AuthContext);
+  const { createUser, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [registerError, setRegisterError] = useState("");
@@ -110,61 +111,36 @@ const SignUp = () => {
         displayName: name,
         photoURL: photo,
       });
-      toast.success("Sign Up successfully!");
+      Swal.fire({
+        title: "Success!",
+        text: "Sign Up successfully",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
       setTimeout(() => {
         navigate("/");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       setRegisterError(error.message);
-      toast.error(error.message);
     }
   };
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        toast.success("Sign Up successfully!");
+        Swal.fire({
+          title: "Success!",
+          text: "Sign Up successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 1000);
         console.log(res.user);
       })
       .catch((error) => {
         setRegisterError(error.message);
-        toast.error(error.message);
-        console.error("Google login error:", error);
-      });
-  };
-
-  const handleFacebookLogin = () => {
-    facebookLogin()
-      .then((res) => {
-        toast.success("Sign Up successfully!");
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-        console.log(res.user);
-      })
-      .catch((error) => {
-        setRegisterError(error.message);
-        toast.error(error.message);
-        console.error("Facebook login error:", error);
-      });
-  };
-
-  const handleGithubLogin = () => {
-    githubLogin()
-      .then((res) => {
-        toast.success("Sign Up successfully!");
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-        console.log(res.user);
-      })
-      .catch((error) => {
-        setRegisterError(error.message);
-        toast.error(error.message);
-        console.error("Github login error:", error);
       });
   };
 
@@ -216,7 +192,7 @@ const SignUp = () => {
             <div className="flex flex-col justify-center lg:px-20 pb-20">
               <form
                 onSubmit={handleSignUp}
-                className="relative flex flex-col gap-8 border-b-2 border-black/60 pb-20"
+                className="relative flex flex-col gap-8 border-b-2 border-black/60 pb-14"
               >
                 <p className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 bg-[#D2D6D7] font-medium">
                   Or
@@ -231,7 +207,7 @@ const SignUp = () => {
                         : "translate-y-8"
                     }`}
                   >
-                    <HiOutlineMail />
+                    <BiUser />
                     Name
                   </label>
                   <input
@@ -242,7 +218,7 @@ const SignUp = () => {
                     name="name"
                     id="name"
                     required
-                    className="bg-transparent focus:outline-none text-lg w-full p-1"
+                    className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                   />
                 </div>
                 <div className="border-b-2 border-black/60 w-full group">
@@ -266,7 +242,7 @@ const SignUp = () => {
                     name="email"
                     id="email"
                     required
-                    className="bg-transparent focus:outline-none text-lg w-full p-1"
+                    className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                   />
                 </div>
                 <div className="border-b-2 border-black/60 w-full group">
@@ -291,7 +267,7 @@ const SignUp = () => {
                       name="password"
                       id="password"
                       required
-                      className="bg-transparent focus:outline-none text-lg w-full p-1"
+                      className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -311,7 +287,7 @@ const SignUp = () => {
                         : "translate-y-8"
                     }`}
                   >
-                    <HiOutlineMail />
+                    <BiLink />
                     Photo
                   </label>
                   <input
@@ -322,16 +298,21 @@ const SignUp = () => {
                     name="photo"
                     id="photo"
                     required
-                    className="bg-transparent focus:outline-none text-lg w-full p-1"
+                    className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                   />
+                </div>
+                <div className="text-center -mb-4">
+                  {registerError && (
+                    <p className="text-sm text-red-600">{registerError}</p>
+                  )}
                 </div>
                 <input
                   type="submit"
                   value="Sign In"
-                  className="btn btn-ghost normal-case text-lg text-black/70 bg-transparent border-2 border-black/60 hover:border-black/60 hover:bg-color1/20 duration-300 rounded-full px-6 w-full m-auto mt-2"
+                  className="btn btn-ghost normal-case text-lg text-black/70 bg-transparent border-2 border-black/60 hover:border-black/60 hover:bg-color1/20 duration-300 rounded-full px-6 w-full m-auto"
                 />
               </form>
-              <div className="flex flex-col gap-8 pt-20">
+              <div className="pt-14">
                 <button
                   onClick={handleGoogleLogin}
                   className="btn btn-ghost normal-case text-lg text-black/70 bg-transparent border-2 border-black/60 hover:border-black/60 hover:bg-color1/20 duration-300 rounded-full px-6 w-full m-auto"
@@ -341,20 +322,12 @@ const SignUp = () => {
                     <BsGoogle className="text-xl" />
                   </span>
                 </button>
-                <button
-                  onClick={handleGithubLogin}
-                  className="btn btn-ghost normal-case text-lg text-black/70 bg-transparent border-2 border-black/60 hover:border-black/60 hover:bg-color1/20 duration-300 rounded-full px-6 w-full m-auto"
-                >
-                  Sign Up with{" "}
-                  <span>
-                    <BsGithub className="text-xl" />
-                  </span>
-                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

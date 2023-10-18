@@ -2,11 +2,11 @@ import { useContext, useRef, useState } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { PiPasswordBold } from "react-icons/pi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { BsGoogle } from "react-icons/bs";
-import { FaFacebookF, FaXTwitter } from "react-icons/fa6";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Navbar from "../Components/Navbar";
+import Swal from "sweetalert2";
+import Footer from "../Components/Footer";
 
 const SignIn = () => {
   const { login } = useContext(AuthContext);
@@ -57,58 +57,40 @@ const SignIn = () => {
     const password = form.get("password");
 
     login(email, password)
-      .then((res) => {
+      .then(() => {
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
-        }, 2000);
-        toast.success("Sign In successful!", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
+        }, 1000);
+        Swal.fire({
+          title: "Success!",
+          text: "Sign In successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
         });
-        console.log(res.user);
       })
       .catch((error) => {
         if (error.message === "Invalid email") {
-          toast.error("Invalid email. Please check your email address.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid email. Please check your email address",
+            icon: "error",
+            confirmButtonText: "Cool",
           });
         } else if (error.message === "Invalid password") {
-          toast.error("Invalid password. Please check your password.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid password. Please check your password",
+            icon: "error",
+            confirmButtonText: "Cool",
           });
         } else {
-          toast.error("Sign In failed. Please check your credentials.", {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
+          Swal.fire({
+            title: "Error!",
+            text: "Sign In failed. Please check your credentials.",
+            icon: "error",
+            confirmButtonText: "Cool",
           });
         }
-        console.error(error);
       });
   };
 
@@ -184,7 +166,7 @@ const SignIn = () => {
                     name="email"
                     id="email"
                     required
-                    className="bg-transparent focus:outline-none text-lg w-full p-1"
+                    className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                   />
                 </div>
                 <div className="border-b-2 border-black/60 w-full group">
@@ -209,7 +191,7 @@ const SignIn = () => {
                       name="password"
                       id="password"
                       required
-                      className="bg-transparent focus:outline-none text-lg w-full p-1"
+                      className="bg-transparent rounded-t-lg focus:outline-none text-lg w-full p-1"
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -229,6 +211,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
