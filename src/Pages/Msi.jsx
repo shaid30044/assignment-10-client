@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const AMD = () => {
+const Msi = () => {
   const products = useLoaderData();
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const AMD = () => {
   const [activeItem, setActiveItem] = useState(0);
   const [item, setItem] = useState(products);
 
-  const amdProducts = products.filter((product) => product.brand === "AMD");
+  const msiProducts = products.filter((product) => product.brand === "MSI");
 
   useEffect(() => {
     const handleFetch = async () => {
@@ -30,7 +30,7 @@ const AMD = () => {
     handleFetch();
   }, []);
 
-  const amdCarousel = carousel.filter((product) => product.brand === "AMD");
+  const msiCarousel = carousel.filter((product) => product.brand === "MSI");
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -84,7 +84,7 @@ const AMD = () => {
       <Navbar />
       <div>
         <div className="carousel w-full">
-          {amdCarousel.map((item, index) => (
+          {msiCarousel.map((item, index) => (
             <div
               key={item.id}
               id={`item${index}`}
@@ -97,7 +97,7 @@ const AMD = () => {
           ))}
         </div>
         <div className="flex justify-center w-full py-2 gap-2">
-          {amdCarousel.map((item, index) => (
+          {msiCarousel.map((item, index) => (
             <a
               key={item.id}
               href={`#item${index}`}
@@ -110,7 +110,9 @@ const AMD = () => {
       </div>
       <button
         onClick={handleBack}
-        className="btn btn-ghost normal-case text-lg font-bitter text-color1/70 hover:text-color1/90 bg-transparent hover:bg-color2/30 duration-300 rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
+        className="btn btn-ghost normal-case text-lg font-bitter text-color1/
+70 hover:text-color1/90 bg-transparent hover:bg-color2/30 
+duration-300 rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
       >
         <BiArrowBack /> Back
       </button>
@@ -119,7 +121,7 @@ const AMD = () => {
           Products
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
-          {amdProducts.map((product) => (
+          {msiProducts.map((product) => (
             <div key={product._id} data-aos="zoom-in">
               <img src={product.image} />
               <div className="border-x-2 border-color2/30 px-4">
@@ -198,4 +200,4 @@ const AMD = () => {
   );
 };
 
-export default AMD;
+export default Msi;

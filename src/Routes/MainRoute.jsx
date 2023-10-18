@@ -8,6 +8,11 @@ import AddProduct from "../Pages/AddProduct";
 import AMD from "../Pages/AMD";
 import UpdateProduct from "../Pages/UpdateProduct";
 import Details from "../Pages/Details";
+import Intel from "../Pages/Intel";
+import Asus from "../Pages/Asus";
+import Gigabyte from "../Pages/Gigabyte";
+import Msi from "../Pages/Msi";
+import Nvidia from "../Pages/Nvidia";
 
 const router = createBrowserRouter([
   {
@@ -42,23 +47,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/ASUS",
-        element: <AddProduct />,
+        element: <Asus />,
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/Gigabyte",
-        element: <AddProduct />,
+        element: <Gigabyte />,
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/MSI",
-        element: <AddProduct />,
+        element: <Msi />,
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/Intel",
-        element: <AddProduct />,
+        element: <Intel />,
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/Nvidia",
-        element: <AddProduct />,
+        element: <Nvidia />,
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/signIn",
