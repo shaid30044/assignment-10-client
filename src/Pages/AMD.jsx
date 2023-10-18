@@ -6,12 +6,16 @@ import { FaEye } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi2";
 import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AMD = () => {
   const products = useLoaderData();
 
   const [carousel, setCarousel] = useState([]);
   const [activeItem, setActiveItem] = useState(0);
+  const [item, setItem] = useState(products);
 
   const amdProducts = products.filter((product) => product.brand === "AMD");
 
@@ -25,6 +29,45 @@ const AMD = () => {
   }, []);
 
   const amdCarousel = carousel.filter((product) => product.brand === "AMD");
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/product/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount) {
+              Swal.fire("Deleted!", "Your coffee has been deleted.", "success");
+              const remaining = item.filter((cof) => cof._id !== _id);
+              setItem(remaining);
+            }
+          });
+      }
+    });
+  };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+    });
+  }, []);
 
   return (
     <div className="font-bitter">
@@ -61,7 +104,7 @@ const AMD = () => {
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
           {amdProducts.map((product) => (
-            <div key={product._id}>
+            <div key={product._id} data-aos="zoom-in">
               <img src={product.image} />
               <div className="border-x-2 border-color2/30 px-4">
                 <p className="pt-4 pb-2">
@@ -123,7 +166,10 @@ const AMD = () => {
                     <HiPencil />
                   </button>
                 </Link>
-                <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full">
+                <button
+                  onClick={() => handleDelete(product._id)}
+                  className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full"
+                >
                   <MdDelete />
                 </button>
               </div>

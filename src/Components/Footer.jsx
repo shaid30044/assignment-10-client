@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-color2/20 font-bitter">
-      <div className="px-4 md:px-10 lg:px-20 py-16 md:py-20">
+      <div className="px-4 md:px-10 lg:px-20 py-28 md:py-40">
         <Link
           to="/"
           className="flex justify-center text-3xl md:text-6xl lg:text-7xl text-color1 font-monoton"
