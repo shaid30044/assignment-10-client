@@ -5,6 +5,7 @@ import Error from "../Pages/Error";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
 import AddProduct from "../Pages/AddProduct";
+import AMD from "../Pages/AMD";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
+        element: <AddProduct />,
+      },
+      {
+        path: "/AMD",
+        element: <AMD />,
+        loader: () => fetch("http://localhost:5000/product"),
+      },
+      {
+        path: "/ASUS",
+        element: <AddProduct />,
+      },
+      {
+        path: "/Gigabyte",
+        element: <AddProduct />,
+      },
+      {
+        path: "/MSI",
+        element: <AddProduct />,
+      },
+      {
+        path: "/Intel",
+        element: <AddProduct />,
+      },
+      {
+        path: "/Nvidia",
         element: <AddProduct />,
       },
       {

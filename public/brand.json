@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "1",
+    "image": "https://i.ibb.co/8b16Z9T/image7.jpg",
+    "brand": "AMD"
+  },
+  {
+    "_id": "2",
+    "image": "https://i.ibb.co/BwVQKD1/image8.jpg",
+    "brand": "ASUS"
+  },
+  {
+    "_id": "3",
+    "image": "https://i.ibb.co/GMp1JyP/image9.jpg",
+    "brand": "Gigabyte"
+  },
+  {
+    "_id": "4",
+    "image": "https://i.ibb.co/VpfqFMm/image10.jpg",
+    "brand": "Intel"
+  },
+  {
+    "_id": "5",
+    "image": "https://i.ibb.co/tYjNpfz/image11.jpg",
+    "brand": "MSI"
+  },
+  {
+    "_id": "6",
+    "image": "https://i.ibb.co/LdfsB89/image12.jpg",
+    "brand": "Nvidia"
+  }
+]

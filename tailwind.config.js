@@ -6,6 +6,7 @@ export default {
       colors: {
         color1: "#61777f",
         color2: "#C8C8C8",
+        star: "#FF8C47",
       },
       fontFamily: {
         bitter: ["Bitter", "serif"],

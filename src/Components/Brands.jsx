@@ -1,20 +1,37 @@
 import { Link } from "react-router-dom";
-import amd from "../assets/AMD.png";
+import { useEffect, useState } from "react";
 
 const Brands = () => {
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    const handleFetch = async () => {
+      const res = await fetch("brand.json");
+      const data = await res.json();
+      setBrands(data);
+    };
+    handleFetch();
+  }, []);
+
   return (
     <div className="font-bitter px-4 md:px-10 lg:px-20 py-32">
       <h1 className="text-5xl font-semibold text-center text-black/70 pb-16">
         Brands
       </h1>
-      <Link>
-        <button>
-          <div className="bg-color1/10 px-20 py-40">
-            <img className="w-60" src={amd} alt="" />
-          </div>
-          <h1 className="text-2xl font-semibold bg-color1/30 py-4">AMD</h1>
-        </button>
-      </Link>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 items-center gap-4 md:gap-6 lg:gap-8">
+        {brands.map((brand, idx) => (
+          <Link to={brand.brand} key={idx}>
+            <button className="relative group">
+              <img className="md:w-60" src={brand.image} />
+              <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-opacity duration-500">
+                <h1 className="text-lg font-semibold text-white/80 pb-2">
+                  {brand.brand}
+                </h1>
+              </div>
+            </button>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
