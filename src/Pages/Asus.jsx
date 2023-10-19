@@ -44,9 +44,12 @@ const Asus = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

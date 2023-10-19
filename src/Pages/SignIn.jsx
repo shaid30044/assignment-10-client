@@ -97,9 +97,9 @@ const SignIn = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-color2/30 font-bitter px-4 md:px-10 lg:px-40 py-20">
-        <div className="grid md:grid-cols-2 md:justify-between border-2 border-color1 bg-color1/20 rounded-3xl">
-          <div className="flex flex-col justify-center items-center bg-color1/20 rounded-3xl px-4 py-20">
+      <div className="bg-color2/10 font-bitter px-4 md:px-10 lg:px-40 py-20">
+        <div className="grid md:grid-cols-2 md:justify-between border-2 border-color1 bg-color1/10 rounded-3xl">
+          <div className="flex flex-col justify-center items-center bg-color1/10 rounded-3xl px-4 py-20">
             <h1 className="md:text-2xl lg:text-4xl font-medium text-black/70 pb-1">
               Welcome to...
             </h1>

@@ -147,9 +147,9 @@ const SignUp = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-color2/30 font-bitter px-4 md:px-10 lg:px-40 py-20">
-        <div className="grid md:grid-cols-2 md:justify-between border-2 border-color1 bg-color1/20 rounded-3xl">
-          <div className="flex flex-col justify-center items-center bg-color1/20 rounded-3xl px-4 py-20">
+      <div className="bg-color2/10 font-bitter px-4 md:px-10 lg:px-40 py-20">
+        <div className="grid md:grid-cols-2 md:justify-between border-2 border-color1 bg-color1/10 rounded-3xl">
+          <div className="flex flex-col justify-center items-center bg-color1/10 rounded-3xl px-4 py-20">
             <h1 className="md:text-2xl lg:text-4xl font-medium text-black/70 pb-1">
               Welcome to...
             </h1>
@@ -194,7 +194,7 @@ const SignUp = () => {
                 onSubmit={handleSignUp}
                 className="relative flex flex-col gap-8 border-b-2 border-black/60 pb-14"
               >
-                <p className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 bg-[#D2D6D7] font-medium">
+                <p className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 bg-[#EBECED] font-medium">
                   Or
                 </p>
                 <div className="border-b-2 border-black/60 w-full group">

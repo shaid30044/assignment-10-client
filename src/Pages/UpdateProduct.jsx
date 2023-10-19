@@ -151,13 +151,16 @@ const UpdateProduct = () => {
       description,
     };
 
-    fetch(`http://localhost:5000/product/${product._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateProduct),
-    })
+    fetch(
+      `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${product._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

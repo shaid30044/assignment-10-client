@@ -32,43 +32,65 @@ const router = createBrowserRouter([
         path: "/update-product/:id",
         element: <UpdateProduct />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(
+            `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+          ),
       },
       {
         path: "/product/:id",
         element: <Details />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(
+            `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+          ),
       },
       {
         path: "/AMD",
         element: <AMD />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/ASUS",
         element: <Asus />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/Gigabyte",
         element: <Gigabyte />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/MSI",
         element: <Msi />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/Intel",
         element: <Intel />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/Nvidia",
         element: <Nvidia />,
-        loader: () => fetch("http://localhost:5000/product"),
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+          ),
       },
       {
         path: "/signIn",
