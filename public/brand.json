@@ -1,32 +1,12 @@
 [
+  { "id": 1, "brand": "ASUS", "image": "https://i.ibb.co/BB3JFw7/Asus.png" },
+  { "id": 2, "brand": "AMD", "image": "https://i.ibb.co/3ypjyLR/AMD.png" },
+  { "id": 3, "brand": "Intel", "image": "https://i.ibb.co/s9fRkBj/Intel.png" },
   {
-    "_id": "1",
-    "image": "https://i.ibb.co/8b16Z9T/image7.jpg",
-    "brand": "AMD"
+    "id": 4,
+    "brand": "Gigabyte",
+    "image": "https://i.ibb.co/gwd5rSM/Gigabyte.png"
   },
-  {
-    "_id": "2",
-    "image": "https://i.ibb.co/BwVQKD1/image8.jpg",
-    "brand": "ASUS"
-  },
-  {
-    "_id": "3",
-    "image": "https://i.ibb.co/GMp1JyP/image9.jpg",
-    "brand": "Gigabyte"
-  },
-  {
-    "_id": "4",
-    "image": "https://i.ibb.co/VpfqFMm/image10.jpg",
-    "brand": "Intel"
-  },
-  {
-    "_id": "5",
-    "image": "https://i.ibb.co/tYjNpfz/image11.jpg",
-    "brand": "MSI"
-  },
-  {
-    "_id": "6",
-    "image": "https://i.ibb.co/LdfsB89/image12.jpg",
-    "brand": "Nvidia"
-  }
+  { "id": 5, "brand": "MSI", "image": "https://i.ibb.co/8d3MMzm/MSI.png" },
+  { "id": 6, "brand": "Nvidia", "image": "https://i.ibb.co/njS5vfY/Nvidia.png" }
 ]

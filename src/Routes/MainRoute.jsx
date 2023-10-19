@@ -14,7 +14,6 @@ import Gigabyte from "../Pages/Gigabyte";
 import Msi from "../Pages/Msi";
 import Nvidia from "../Pages/Nvidia";
 import Cart from "../Pages/Cart";
-import CartProduct from "../Components/CartProduct";
 
 const router = createBrowserRouter([
   {
