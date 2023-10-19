@@ -5,9 +5,7 @@ import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi2";
-import { MdDelete } from "react-icons/md";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -17,7 +15,6 @@ const Msi = () => {
 
   const [carousel, setCarousel] = useState([]);
   const [activeItem, setActiveItem] = useState(0);
-  const [item, setItem] = useState(products);
 
   const msiProducts = products.filter((product) => product.brand === "MSI");
 
@@ -31,41 +28,6 @@ const Msi = () => {
   }, []);
 
   const msiCarousel = carousel.filter((product) => product.brand === "MSI");
-
-  const handleDelete = (_id) => {
-    console.log(_id);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(
-          `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount) {
-              Swal.fire(
-                "Deleted!",
-                "Your product has been deleted.",
-                "success"
-              );
-              const remaining = item.filter((cof) => cof._id !== _id);
-              setItem(remaining);
-            }
-          });
-      }
-    });
-  };
 
   useEffect(() => {
     AOS.init({
@@ -123,80 +85,80 @@ duration-300 rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
         <h1 className="text-5xl font-semibold text-center text-black/70 pb-16">
           Products
         </h1>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
-          {msiProducts.map((product) => (
-            <div key={product._id} data-aos="zoom-in">
-              <img src={product.image} />
-              <div className="border-x-2 border-color2/30 px-4">
-                <p className="pt-4 pb-2">
-                  <span className="text-xs font-medium text-color1 bg-color2/30 rounded-sm px-2 py-1">
-                    {product.type}
-                  </span>
-                </p>
-                <h3 className="text-lg lg:text-xl font-semibold text-black/80">
-                  {product.brand}
-                </h3>
-                <h3 className="text-xl lg:text-2xl font-medium text-black/60 pt-1 pb-4">
-                  {product.name}
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 justify-between items-center border-x-2 border-color2/30 px-4 pb-5">
-                <p className="text-black/50">${product.price}</p>
-                <div className="flex justify-end items-center gap-2">
-                  <div className="text-star">
-                    {product.rating == 3.5 ? (
-                      <div className="flex gap-1">
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarHalf />
-                        <BsStar />
-                      </div>
-                    ) : product.rating == 4.0 ? (
-                      <div className="flex gap-1">
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStar />
-                      </div>
-                    ) : (
-                      <div className="flex gap-1">
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarFill />
-                        <BsStarHalf />
-                      </div>
-                    )}
+        {!products.length ? (
+          <div className="text-xl font-medium text-black/60 text-center">
+            No product found!
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-10">
+            {msiProducts.map((product) => (
+              <div key={product._id} data-aos="zoom-in">
+                <img src={product.image} />
+                <div className="border-x-2 border-color2/30 px-4">
+                  <p className="pt-4 pb-2">
+                    <span className="text-xs font-medium text-color1 bg-color2/30 rounded-sm px-2 py-1">
+                      {product.type}
+                    </span>
+                  </p>
+                  <h3 className="text-lg lg:text-xl font-semibold text-black/80">
+                    {product.brand}
+                  </h3>
+                  <h3 className="text-xl lg:text-2xl font-medium text-black/60 pt-1 pb-4">
+                    {product.name}
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 justify-between items-center border-x-2 border-color2/30 px-4 pb-5">
+                  <p className="text-black/50">${product.price}</p>
+                  <div className="flex justify-end items-center gap-2">
+                    <div className="text-star">
+                      {product.rating == 3.5 ? (
+                        <div className="flex gap-1">
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarHalf />
+                          <BsStar />
+                        </div>
+                      ) : product.rating == 4.0 ? (
+                        <div className="flex gap-1">
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStar />
+                        </div>
+                      ) : (
+                        <div className="flex gap-1">
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarFill />
+                          <BsStarHalf />
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-black/50">{product.rating}</p>
                   </div>
-                  <p className="text-black/50">{product.rating}</p>
+                </div>
+                <div className="grid grid-cols-2 items-center">
+                  <Link to={`/product/${product._id}`}>
+                    <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover:bg-color2/40 duration-300 rounded-none w-full">
+                      <FaEye />
+                    </button>
+                  </Link>
+                  <Link
+                    to={`/update-product/${product._id}`}
+                    className="border-l-[2px] border-color2/60"
+                  >
+                    <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full">
+                      <HiPencil />
+                    </button>
+                  </Link>
                 </div>
               </div>
-              <div className="grid grid-cols-3 items-center">
-                <Link to={`/product/${product._id}`}>
-                  <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover:bg-color2/40 duration-300 rounded-none w-full">
-                    <FaEye />
-                  </button>
-                </Link>
-                <Link
-                  to={`/update-product/${product._id}`}
-                  className="border-x-[2px] border-color2/60"
-                >
-                  <button className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full">
-                    <HiPencil />
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(product._id)}
-                  className="flex justify-center btn btn-ghost text-xl text-color1 bg-color2/30 hover.bg-color2/40 duration-300 rounded-none w-full"
-                >
-                  <MdDelete />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </div>

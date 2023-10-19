@@ -3,10 +3,39 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
+import Swal from "sweetalert2";
 
 const Details = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
+  console.log(product);
+
+  const handleAddToCart = () => {
+    const { _id, ...productData } = product;
+
+    fetch(
+      "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/cart",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Product added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
 
   const handleBack = () => {
     navigate(-1);
@@ -70,6 +99,7 @@ const Details = () => {
             <p className="text-black/50">{product.rating}</p>
           </div>
           <button
+            onClick={handleAddToCart}
             className="btn btn-ghost normal-case lg:col-span-2 text-lg 
           text-black/70 bg-color1/20 border-2 border-black/60 
           hover:border-black/60 hover:bg-color1/30 duration-300 

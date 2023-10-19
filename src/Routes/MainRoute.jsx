@@ -13,6 +13,8 @@ import Asus from "../Pages/Asus";
 import Gigabyte from "../Pages/Gigabyte";
 import Msi from "../Pages/Msi";
 import Nvidia from "../Pages/Nvidia";
+import Cart from "../Pages/Cart";
+import CartProduct from "../Components/CartProduct";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
         element: <UpdateProduct />,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+            `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${params.id}`
           ),
       },
       {
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
         element: <Details />,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+            `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${params.id}`
           ),
       },
       {
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
         element: <AMD />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
           ),
       },
       {
@@ -57,7 +59,7 @@ const router = createBrowserRouter([
         element: <Asus />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
           ),
       },
       {
@@ -65,7 +67,7 @@ const router = createBrowserRouter([
         element: <Gigabyte />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
           ),
       },
       {
@@ -73,7 +75,7 @@ const router = createBrowserRouter([
         element: <Msi />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
           ),
       },
       {
@@ -81,7 +83,7 @@ const router = createBrowserRouter([
         element: <Intel />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
           ),
       },
       {
@@ -89,7 +91,15 @@ const router = createBrowserRouter([
         element: <Nvidia />,
         loader: () =>
           fetch(
-            "https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product"
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
+          ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+        loader: () =>
+          fetch(
+            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/cart"
           ),
       },
       {

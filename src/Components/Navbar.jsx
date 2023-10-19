@@ -1,21 +1,46 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/TD.png";
 import { useContext, useState } from "react";
+import { BsFillSunFill } from "react-icons/bs";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { HiMiniMoon } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import "../CSS/theme.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showUserInfo, setShowUserInfo] = useState(false);
+  const [dark, setDark] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const toggleTheme = () => {
+    const newDark = !dark;
+    setDark(newDark);
+    localStorage.setItem("darkMode", newDark);
+
+    if (newDark) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  };
+
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    setDark(isDarkMode);
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    }
+  }, []);
 
   const handleUserInfoClick = () => {
     setShowUserInfo(!showUserInfo);
@@ -43,7 +68,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center font-bitter bg-color1/30 px-4 md:px-10 lg:px-20 py-0.5">
+    <div
+      className={`flex justify-between items-center font-bitter px-4 md:px-10 lg:px-20 py-0.5 ${
+        dark ? "bg-color2/30" : "bg-color1/80"
+      }`}
+    >
       <Link to="/">
         <img className="h-12 md:h-16" src={logo} alt="" />
       </Link>
@@ -53,11 +82,17 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={toggleMenu}
-                className="btn btn-ghost text-xl text-color1 px-0 py-0"
+                className={`btn btn-ghost text-xl px-0 py-0 ${
+                  dark ? "text-color2" : "text-color1"
+                }`}
               >
                 <RxCross2 />
               </button>
-              <ul className="absolute top-[50px] right-0 flex flex-col gap-6 text-base font-medium border-2 border-color1/40 text-black/60 backdrop-blur-md rounded-xl text-center bg-white/40 p-6 pb-8 w-40">
+              <ul
+                className={`absolute top-[50px] right-0 flex flex-col gap-6 text-base font-medium border-2 border-color1/40 backdrop-blur-md rounded-xl text-center p-6 pb-8 w-48 ${
+                  dark ? "text-color2 bg-black/30" : "text-black/60 bg-white/40"
+                }`}
+              >
                 <li>
                   <NavLink
                     to="/"
@@ -65,7 +100,11 @@ const Navbar = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-color1 border-b-[3px] border-color1 px-4 pb-2"
+                        ? `border-b-[3px] px-4 pb-2 ${
+                            dark
+                              ? "text-dark1 border-dark1"
+                              : "text-color1 border-color1"
+                          }`
                         : ""
                     }
                   >
@@ -79,7 +118,11 @@ const Navbar = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-color1 border-b-[3px] border-color1 px-4 pb-2"
+                        ? `border-b-[3px] px-4 pb-2 ${
+                            dark
+                              ? "text-dark1 border-dark1"
+                              : "text-color1 border-color1"
+                          }`
                         : ""
                     }
                   >
@@ -93,7 +136,11 @@ const Navbar = () => {
                       isPending
                         ? "pending"
                         : isActive
-                        ? "text-color1 border-b-[3px] border-color1 px-4 pb-2"
+                        ? `border-b-[3px] px-4 pb-2 ${
+                            dark
+                              ? "text-dark1 border-dark1"
+                              : "text-color1 border-color1"
+                          }`
                         : ""
                     }
                   >
@@ -105,13 +152,19 @@ const Navbar = () => {
           ) : (
             <button
               onClick={toggleMenu}
-              className="btn btn-ghost text-xl text-color1 px-0 py-0"
+              className={`btn btn-ghost text-xl px-0 py-0 ${
+                dark ? "text-dark1" : "text-color2"
+              }`}
             >
               <HiOutlineMenuAlt1 />
             </button>
           )}
         </div>
-        <ul className="hidden md:flex text-lg font-medium text-black/40">
+        <ul
+          className={`hidden md:flex text-lg font-medium text-black/40 dark:text-color2 ${
+            dark ? "text-color2" : "text-black/40"
+          }`}
+        >
           <li className="px-6">
             <NavLink
               to="/"
@@ -119,7 +172,11 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-color1 border-b-[3px] border-color1 px-6 pb-5"
+                  ? `text-color1 dark:text-dark1 border-b-[3px] border-color1 dark:border-dark1 px-6 pb-5 ${
+                      !dark
+                        ? "text-dark1 border-dark1"
+                        : "text-color1 border-color1"
+                    }`
                   : ""
               }
             >
@@ -133,7 +190,11 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-color1 border-b-[3px] border-color1 px-6 pb-5"
+                  ? `text-color1 dark:text-dark1 border-b-[3px] border-color1 dark:border-dark1 px-6 pb-5 ${
+                      dark
+                        ? "text-dark1 border-dark1"
+                        : "text-color1 border-color1"
+                    }`
                   : ""
               }
             >
@@ -147,7 +208,11 @@ const Navbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-color1 border-b-[3px] border-color1 px-6 pb-5"
+                  ? `text-color1 dark:text-dark1 border-b-[3px] border-color1 dark:border-dark1 px-6 pb-5 ${
+                      dark
+                        ? "text-dark1 border-dark1"
+                        : "text-color1 border-color1"
+                    }`
                   : ""
               }
             >
@@ -169,30 +234,64 @@ const Navbar = () => {
             </button>
           ) : (
             <Link to="/signIn">
-              <button className="md:hidden text-xl text-color1 pl-4 pt-1">
+              <button
+                className={`md:hidden text-xl pl-4 pt-1 ${
+                  dark ? "text-color2" : "text-color1"
+                }`}
+              >
                 <BiLogInCircle />
               </button>
-              <button className="hidden md:block btn btn-ghost normal-case text-lg font-medium text-black/40 bg-color1/20 hover:text-color1 hover:bg-color1/30 rounded-full duration-300 px-6">
+              <button
+                className={`hidden md:block btn btn-ghost normal-case text-lg font-medium rounded-full duration-300 px-6 ${
+                  dark
+                    ? "text-color2 bg-black/30 hover:text-dark1 hover:bg-color2/10"
+                    : "text-black/40 bg-color1/20 hover:text-color1 hover:bg-color1/30"
+                }`}
+              >
                 Sign In
               </button>
             </Link>
           )}
           {showUserInfo && user && (
-            <div className="absolute top-[44px] md:top-[52px] right-0 flex flex-col border-2 border-color1/40 gap-2 font-medium text-black/60 backdrop-blur-md rounded-xl text-center bg-white/40 p-6">
+            <div
+              className={`absolute top-[44px] md:top-[52px] right-0 flex flex-col border-2 border-color1/40 gap-2 font-medium text-center backdrop-blur-md rounded-xl p-6 ${
+                dark ? "text-color2 bg-black/30" : "text-black/60 bg-white/40"
+              }`}
+            >
               <span className="pb-2">{user.displayName}</span>
               <span>{user.email}</span>
               <button
                 onClick={handleLogout}
-                className="md:hidden flex items-center gap-2 text-lg text-color1 mt-2 m-auto"
+                className={`md:hidden flex items-center gap-2 text-lg mt-2 m-auto ${
+                  dark ? "text-dark1" : "text-color1"
+                }`}
               >
                 Sign Out <BiLogOutCircle />
               </button>
               <button
                 onClick={handleLogout}
-                className="hidden md:block btn btn-ghost normal-case text-lg font-medium text-black/40 bg-color1/20 hover:text-color1 border-2 border-color1 hover:bg-color1/30 rounded-full duration-300 w-full mt-2 m-auto"
+                className={`hidden md:block btn btn-ghost normal-case text-lg font-medium rounded-full duration-300 w-full mt-2 m-auto ${
+                  dark
+                    ? "text-color2 bg-black/30 hover:text-dark1 hover:bg-color2/10"
+                    : "text-black/40 bg-color1/20 hover:text-color1 hover:bg-color1/30"
+                }`}
               >
                 Sign Out
               </button>
+            </div>
+          )}
+        </div>
+        <div
+          onClick={toggleTheme}
+          className="text-xl text-color1 cursor-pointer pl-4"
+        >
+          {dark ? (
+            <div className="text-color2">
+              <BsFillSunFill />
+            </div>
+          ) : (
+            <div className="text-black/60">
+              <HiMiniMoon />
             </div>
           )}
         </div>

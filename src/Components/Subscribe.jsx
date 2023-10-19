@@ -3,6 +3,7 @@ import { HiOutlineMail } from "react-icons/hi";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const Subscribe = () => {
   const [isSubscribeHovered, setIsSubscribeHovered] = useState(false);
@@ -24,6 +25,16 @@ const Subscribe = () => {
 
   const handleSubscribe = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+
+    Swal.fire({
+      title: "Success!",
+      text: "Subscribe successfully",
+      icon: "success",
+      confirmButtonText: "Cool",
+    });
+
+    form.reset();
   };
 
   useEffect(() => {

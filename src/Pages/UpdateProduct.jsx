@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../Components/Navbar";
 import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
+import { BiArrowBack } from "react-icons/bi";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateProduct = () => {
@@ -152,7 +153,7 @@ const UpdateProduct = () => {
     };
 
     fetch(
-      `https://assignment-10-server-side-7in6hf2vy-md-shaid-hasans-projects.vercel.app/product/${product._id}`,
+      `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${product._id}`,
       {
         method: "PUT",
         headers: {
@@ -176,10 +177,22 @@ const UpdateProduct = () => {
       });
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="bg-color2/30 font-bitter px-4 md:px-10 lg:px-40 py-20">
+      <button
+        onClick={handleBack}
+        className="btn btn-ghost normal-case text-lg font-bitter text-color1/70 
+hover:text-color1/90 bg-transparent hover:bg-color2/30 duration-300 
+rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
+      >
+        <BiArrowBack /> Back
+      </button>
+      <div className="px-4 md:px-10 lg:px-20 pt-10 pb-20 lg:pt-14 lg:pb-32">
         <div className="border-2 border-color1 bg-color1/20 rounded-3xl p-10 md:p-20">
           <h1 className="text-4xl font-medium text-color1 text-center pb-10">
             Update Product
