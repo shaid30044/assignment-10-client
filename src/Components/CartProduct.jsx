@@ -1,14 +1,11 @@
 import Swal from "sweetalert2";
 import { MdDelete } from "react-icons/md";
-import { useState } from "react";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import PropTypes from "prop-types";
 
-const CartProduct = ({ product }) => {
-  const [coffees, setCoffees] = useState(product);
-
+const CartProduct = ({ product, productItem, setProductItem }) => {
   const handleDelete = (_id) => {
     console.log(_id);
     Swal.fire({
@@ -22,7 +19,7 @@ const CartProduct = ({ product }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://ssignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/cart/${_id}`,
+          `https://assignment-10-server-side-hazel.vercel.app/cart/${_id}`,
           {
             method: "DELETE",
           }
@@ -37,8 +34,8 @@ const CartProduct = ({ product }) => {
                 "success"
               );
 
-              const remaining = coffees.filter((cof) => cof._id !== _id);
-              setCoffees(remaining);
+              const remaining = productItem.filter((item) => item._id !== _id);
+              setProductItem(remaining);
             }
           });
       }

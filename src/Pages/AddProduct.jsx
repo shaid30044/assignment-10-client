@@ -150,16 +150,13 @@ const AddProduct = () => {
       description,
     };
 
-    fetch(
-      "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-      }
-    )
+    fetch("https://assignment-10-server-side-hazel.vercel.app/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

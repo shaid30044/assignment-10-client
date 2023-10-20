@@ -13,16 +13,13 @@ const Details = () => {
   const handleAddToCart = () => {
     const { _id, ...productData } = product;
 
-    fetch(
-      "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/cart",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(productData),
-      }
-    )
+    fetch("https://assignment-10-server-side-hazel.vercel.app/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

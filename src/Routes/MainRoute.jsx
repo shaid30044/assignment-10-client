@@ -14,6 +14,7 @@ import Gigabyte from "../Pages/Gigabyte";
 import Msi from "../Pages/Msi";
 import Nvidia from "../Pages/Nvidia";
 import Cart from "../Pages/Cart";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -27,14 +28,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <AddProduct />,
+        element: (
+          <PrivateRoutes>
+            <AddProduct />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/update-product/:id",
-        element: <UpdateProduct />,
+        element: (
+          <PrivateRoutes>
+            <UpdateProduct />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(
-            `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+            `https://assignment-10-server-side-hazel.vercel.app/product/${params.id}`
           ),
       },
       {
@@ -42,64 +51,54 @@ const router = createBrowserRouter([
         element: <Details />,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${params.id}`
+            `https://assignment-10-server-side-hazel.vercel.app/product/${params.id}`
           ),
       },
       {
         path: "/AMD",
         element: <AMD />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/ASUS",
         element: <Asus />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/Gigabyte",
         element: <Gigabyte />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/MSI",
         element: <Msi />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/Intel",
         element: <Intel />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/Nvidia",
         element: <Nvidia />,
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/product"),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoutes>
+            <Cart />
+          </PrivateRoutes>
+        ),
         loader: () =>
-          fetch(
-            "https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/cart"
-          ),
+          fetch("https://assignment-10-server-side-hazel.vercel.app/cart"),
       },
       {
         path: "/signIn",

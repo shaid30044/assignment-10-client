@@ -153,7 +153,7 @@ const UpdateProduct = () => {
     };
 
     fetch(
-      `https://assignment-10-server-side-1x0fpe99d-md-shaid-hasans-projects.vercel.app/product/${product._id}`,
+      `https://assignment-10-server-side-hazel.vercel.app/product/${product._id}`,
       {
         method: "PUT",
         headers: {
