@@ -184,9 +184,7 @@ const AddProduct = () => {
       <Navbar />
       <button
         onClick={handleBack}
-        className="btn btn-ghost normal-case text-lg font-bitter text-color1/70 
-hover:text-color1/90 bg-transparent hover:bg-color2/30 duration-300 
-rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
+        className="btn btn-ghost normal-case text-lg font-bitter text-color1/70 hover:text-color1/90 bg-transparent hover:bg-color2/30 duration-300 rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
       >
         <BiArrowBack /> Back
       </button>
