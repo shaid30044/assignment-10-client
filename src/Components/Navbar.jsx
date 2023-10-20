@@ -145,7 +145,7 @@ const Navbar = () => {
                         : ""
                     }
                   >
-                    Cart
+                    My Cart
                   </NavLink>
                 </li>
               </ul>
@@ -217,7 +217,7 @@ const Navbar = () => {
                   : ""
               }
             >
-              Cart
+              My Cart
             </NavLink>
           </li>
         </ul>

@@ -26,7 +26,7 @@ const BrandLogo = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 lg:grid-cols-6 justify-center items-center gap-y-8 px-4 md:px-10 lg:px-20 py-10">
+    <div className="grid grid-cols-3 lg:grid-cols-6 justify-center items-center gap-y-8 bg-color2/40 px-4 md:px-10 lg:px-20 py-10">
       {brands.map((brand) => (
         <img
           data-aos="zoom-in"

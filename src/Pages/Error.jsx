@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Error = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-[90vh]">
+    <div className="flex flex-col justify-center items-center bg-color2/40 h-screen">
       <p className="text-[240px] text-black/60 pb-4">
         <SiDarkreader />
       </p>
