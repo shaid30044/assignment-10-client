@@ -45,6 +45,7 @@ const Navbar = () => {
   const handleUserInfoClick = () => {
     setShowUserInfo(!showUserInfo);
   };
+
   const handleLogout = () => {
     Swal.fire({
       title: "Are you sure?",

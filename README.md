@@ -1,8 +1,15 @@
-# React + Vite
+• According to user's own wish, the product of any brand on the home page can be added to that brand's page.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+• User can add his/her favorite products to the cart.
 
-Currently, two official plugins are available:
+• User can delete any product in the cart as per his/her wish.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+• User can update any product data.
+
+• User can use either dark mode or light mode on the website.
+
+• In case of signing up on the website, user can sign up with either email or Google.
+
+• If user want to add or update a new product on the brand page and add or delete a product to the cart, he/she must be signed in on the website.
+
+client-side live link:

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { BiLink, BiUser } from "react-icons/bi";
+import { BiLink, BiUser, BiArrowBack } from "react-icons/bi";
 import { BsGoogle } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { PiPasswordBold } from "react-icons/pi";
@@ -144,10 +144,22 @@ const SignUp = () => {
       });
   };
 
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="bg-color2/10 font-bitter px-4 md:px-10 lg:px-40 py-20">
+      <button
+        onClick={handleBack}
+        className="btn btn-ghost normal-case text-lg font-bitter text-color1/
+70 hover:text-color1/90 bg-transparent hover:bg-color2/30 duration-300 
+rounded-none px-10 mx-4 md:mx-10 lg:mx-20 mt-10 lg:mt-20"
+      >
+        <BiArrowBack /> Back to Home
+      </button>
+      <div className="px-4 md:px-10 lg:px-20 pt-10 pb-20 lg:pt-14 lg:pb-32">
         <div className="grid md:grid-cols-2 md:justify-between border-2 border-color1 bg-color1/10 rounded-3xl">
           <div className="flex flex-col justify-center items-center bg-color1/10 rounded-3xl px-4 py-20">
             <h1 className="md:text-2xl lg:text-4xl font-medium text-black/70 pb-1">

@@ -4,34 +4,38 @@ import Navbar from "../Components/Navbar";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { BiArrowBack } from "react-icons/bi";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Details = () => {
+  const { user } = useContext(AuthContext);
   const product = useLoaderData();
   const navigate = useNavigate();
-  console.log(product);
 
   const handleAddToCart = () => {
-    const { _id, ...productData } = product;
-
-    fetch("https://assignment-10-server-side-hazel.vercel.app/cart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(productData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Success!",
-            text: "Product added successfully",
-            icon: "success",
-            confirmButtonText: "Cool",
-          });
-        }
-      });
+    if (user) {
+      const { _id, ...productData } = product;
+      fetch("https://assignment-10-server-side-hazel.vercel.app/cart", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              title: "Success!",
+              text: "Product added successfully",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+          }
+        });
+    } else {
+      navigate("/signIn");
+    }
   };
 
   const handleBack = () => {
