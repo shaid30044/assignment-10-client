@@ -12,4 +12,6 @@
 
 • If user want to add or update a new product on the brand page and add or delete a product to the cart, he/she must be signed in on the website.
 
-client-side live link: https://assignment-10-72807.web.app/
+Technologies: React, JavaScript, Tailwind CSS, Daisy UI, Firebase, Node.js, Express.js, MongoDB
+
+client-side live link: https://assignment-10-72807.web.app
